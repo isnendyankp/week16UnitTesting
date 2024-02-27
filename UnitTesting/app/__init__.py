@@ -1,6 +1,7 @@
 from flask import Flask
 from app.route import pokemon_route
 import os
+from app.utils.database import db
 
 app = Flask(__name__)
 
