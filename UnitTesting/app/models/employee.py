@@ -8,4 +8,13 @@ class Employees(db.Model):
     role = db.Column(db.String(100), nullable=True)
     schedule = db.Column(db.String(100), nullable=True)
 
-   
+    # method to return the employee as a dictionary
+    def as_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "email": self.email,
+            "phone_number": self.phone_number,
+            "role": self.role,
+            "schedule": self.schedule
+        }
