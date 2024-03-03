@@ -24,3 +24,25 @@ def get_employee_by_id(employee_id):
         return employee.as_dict(), 200
     except Exception as e:
         return e, 500
+    
+# Method POST add new employee to the zoo.
+# The request body should be in JSON format, such as: name, email, role & schedule.
+@employee_blueprint.route("/", methods=["POST"])
+def create_employee():
+    try:
+        # get data from request
+        data = request.json
+        # create data employee
+        employee = Employees()
+        # set the employee attributes
+        employee.name = data['name']
+        employee.email = data['email']
+        employee.phone_number = data['phone_number']
+        employee.role = data['role']
+        employee.schedule = data['schedule']
+        # add the employee to the database
+        db.session.add(employee)
+        db.session.commit()
+        return 'berhasil', 200
+    except Exception as e:
+        return e, 500
