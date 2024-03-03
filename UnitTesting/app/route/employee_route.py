@@ -15,3 +15,12 @@ def get_employees():
     except Exception as e:
         return e, 500
 
+# Method GET retrieve employee by id
+@employee_blueprint.route("/<int:employee_id>", methods=["GET"])
+def get_employee_by_id(employee_id):
+    try:
+        # get the employee from the database
+        employee = Employees.query.get(employee_id)
+        return employee.as_dict(), 200
+    except Exception as e:
+        return e, 500
