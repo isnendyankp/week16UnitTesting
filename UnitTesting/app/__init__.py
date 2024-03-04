@@ -1,5 +1,5 @@
 from flask import Flask
-from app.route import pokemon_route, customer_route, animal_route
+from app.route import pokemon_route, customer_route, animal_route, employee_route
 import os
 from app.utils.database import db
 
