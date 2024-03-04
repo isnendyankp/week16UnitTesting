@@ -68,3 +68,16 @@ def update_employee(employee_id):
         return 'berhasil', 200
     except Exception as e:
         return e, 500
+    
+# Method DELETE delete employee by id
+@employee_blueprint.route("/<int:employee_id>", methods=["DELETE"])
+def delete_employee(employee_id):
+    try:
+        # get the employee from the database
+        employee = Employees.query.get(employee_id)
+        # delete the employee from the database
+        db.session.delete(employee)
+        db.session.commit()
+        return 'berhasil', 200
+    except Exception as e:
+        return e, 500
